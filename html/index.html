@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Jeu de mémoire</title>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Jeu de mémoire</h1>
+        </header>
+        <main>
+            <div id="buttons">
+                <button id="easy">Normal</button>
+                <button id="hard">Difficile</button>
+            </div>
+            <div>
+                <table id="highscore">
+                    <thead>
+                        <td colspan="2">High scores</td>
+                    </thead>
+                    <tr>
+                        <td class="normal">Normal</td>
+                        <td class="hard">Difficile</td>
+                    </tr>
+                    <tr class="scores">
+                        <td id="scores-normal"></td>
+                        <td id="scores-hard"></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="board">
+
+            </div>
+            <div id="progress">
+
+            </div>
+        </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="../js/cards.js"></script>
+        <script src="../js/app.js"></script>
+    </body>
+</html>

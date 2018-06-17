@@ -1,0 +1,85 @@
+body {
+  margin: auto;
+  width: 1000px;
+}
+header h1{
+  background-color: rgb(238, 238, 238);
+  font-size: 3em;
+  padding: 0.5em;
+  text-align: center;
+}
+main{
+  text-align: center;
+  margin-top: 3em;
+}
+button{
+  font-size: 2em;
+  margin: 0 0.5em 0.5em;
+  padding: 0.5em 1em;
+  color: white;
+  font-weight: bold;
+}
+#easy{
+  background-color: green;
+}
+#hard{
+  background-color: brown;
+}
+table{
+  width: 100%;
+  background-color: rgb(221, 221, 255);
+}
+tr {
+  display: flex;
+  justify-content: space-around;
+}
+.card{
+  height: 100px;
+  width: 100px;
+  margin: 0.3em;
+}
+.image{
+  background-color: white;
+  height: 100%;
+  display: none;
+}
+.cache{
+  background-color: rgb(170, 170, 170);
+  height: 100%;
+}
+.cache:hover{
+  background-color: rgb(100, 100, 100);
+}
+#progress{
+  margin-top: 1em;
+}
+#highscore{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  background-color: black;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+#highscore thead td{
+  padding: 0.5em;
+  text-transform: uppercase;
+}
+.normal{
+  background-color: green;
+  padding: 0.5em 1.5em;
+}
+.hard{
+  background-color: brown;
+  padding: 0.5em 1.5em;
+}
+.scores{
+  background-color: lightgrey;
+  color: black;
+  text-align: center;
+}
+.scores td{
+  padding: 0.5em;
+}
