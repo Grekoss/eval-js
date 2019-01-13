@@ -33,19 +33,39 @@ tr {
   display: flex;
   justify-content: space-around;
 }
+.card-container{
+  perspective: 1000px;
+}
+.card-container, .cache, .image{
+  width: 100px;
+  width: 100px;
+  margin: 0.3em;
+}
 .card{
   height: 100px;
   width: 100px;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.image,
+.cache{
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: -0.3em;
+  height: 100%;
   margin: 0.3em;
 }
 .image{
   background-color: white;
   height: 100%;
-  display: none;
+  transform: rotateY(180deg);
 }
 .cache{
+  z-index: 2;
+  transform: rotateY(0deg);
   background-color: rgb(170, 170, 170);
-  height: 100%;
 }
 .cache:hover{
   background-color: rgb(100, 100, 100);
@@ -82,4 +102,7 @@ tr {
 }
 .scores td{
   padding: 0.5em;
+}
+.flip{
+  transform: rotateY(180deg);
 }

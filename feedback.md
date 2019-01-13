@@ -121,3 +121,8 @@
 
 - Très bien géré, on voit que tu y as passé du temps :) Manque juste un `.eslintrc` et un peu d'espacement dans ton code ;)
 - Excellente évaluation, bravo :clap:
+
+### Correction
+
+- J'ai apporté un système de retournement des cartes afin de rendre le jeu plus attirant.
+- Ajout du `.eslintrc`
