@@ -1,3 +1,6 @@
+# Feedback disponible
+Une branch "original" a été crée sans les modifications suite au Feedback du professeur.
+
 # Memory
 
 Le but est de coder un mini-jeu en HTML / CSS / JS.  

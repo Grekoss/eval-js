@@ -7,6 +7,7 @@ var app = {
   hard : false,
   scoreHard : 0,
   scoreNormal : 0,
+
   init : function () {
     app.goodPair=0;
     app.hard = false;
@@ -14,10 +15,12 @@ var app = {
     $('#easy').on('click',app.startGame);
     $('#hard').on('click',app.choiseHard);
   },
+
   choiseHard : function () {
     app.hard = true;
     app.startGame();
   },
+
   startGame : function () {
     //Assurance de l'arret du Timer
     app.stopTimer()
@@ -36,6 +39,7 @@ var app = {
     app.seconds = app.nbSeconds;
     app.updateTimer();
   },
+
   createArrayTmp : function () {
     if (app.hard) {
       //Ici on va créer un tableau temporaire comprenant deux tableaux à l'interieur.
@@ -48,18 +52,18 @@ var app = {
       Array.prototype.push.apply(app.arrayTmp, app.fruitsList);
     }
   },
+
   showCards : function () {
     //Affiche l'image
-    app.cardSelect.nextSibling.style.display='block';
-    app.cardSelect.style.display='none';
+    app.cardSelect.parentNode.classList.toggle('flip');
   },
+
   hideCards : function () {
     //cache les images
-    app.cardSelectOne.nextSibling.style.display='none';
-    app.cardSelectOne.style.display='block';
-    app.cardSelectTwo.nextSibling.style.display='none';
-    app.cardSelectTwo.style.display='block';
+    app.cardSelectOne.parentNode.classList.toggle('flip');
+    app.cardSelectTwo.parentNode.classList.toggle('flip');
   },
+
   comparedCards : function () {
     //Compte le nbClick
     app.nbClick++;
@@ -68,11 +72,13 @@ var app = {
     app.showCards();
     //On récupere la data de la carte
     var nameCard = this.nextSibling.getAttribute('data-fruits');
+
     //Affectation des valeurs des cartes dans les clicks
-    if (app.nbClick ===1 ) {
+    if (app.nbClick === 1 ) {
       app.firstCard = nameCard;
       app.cardSelectOne = app.cardSelect;
     }
+
     if (app.nbClick === 2) {
       app.secondCard = nameCard;
       app.cardSelectTwo = app.cardSelect;
@@ -94,10 +100,12 @@ var app = {
           app.init();
         }
       }
+
       // Réinitialisation du click
       app.nbClick = 0;
     }
   },
+
   highscore : function () {
     //Enregistrement des meilleurs scores si c'est le cas!
     if (app.hard) {
@@ -110,35 +118,43 @@ var app = {
         app.scoreNormal=app.seconds;
       }
     }
+
     //Affichages des scores
     var normal = document.getElementById('scores-normal');
     normal.textContent = app.scoreNormal + ' sec.';
     var hard = document.getElementById('scores-hard');
     hard.textContent = app.scoreHard + ' sec.';
   },
+
   createTable : function () {
     //Creation de la table
     app.table = document.createElement('table');
     app.table.id = ('Game');
+
     for (var line =0; line < 4; line++) {
       //creation des lignes du tableau
       app.createLine( line );
     }
+
     var div = document.getElementById('board');
     div.appendChild (app.table);
   },
+
   createLine : function (lineIndex) {
     //Définir la diffilculté poour aider la création du tableau + révision de la ternaire
     var nbColumn = (app.hard ? 9 : 7);
     //Utilisation de boucle pour dessiner les lignes et colonnes du tableau
     var tr = document.createElement('tr');
+
     for (var column = 0; column < nbColumn; column++) {
       //Création du <td> et <div>
       var td = document.createElement('td');
+      var divCard = document.createElement('div');
       var divCache = document.createElement('div');
       var divImage = document.createElement('div');
       //Ajout des class et attribut
-      td.className = 'card';
+      td.className = 'card-container';
+      divCard.className = 'card';
       divCache.className = 'cache';
       divImage.className = 'image';
       //Ajout des images
@@ -152,15 +168,19 @@ var app = {
       //Style d'un <td>
       td.style.width = '100px';
       td.style.height = '100px';
-      //Ajout des <div> dans le <td>
-      td.appendChild( divCache );
-      td.appendChild( divImage );
+      //Ajout de la <div> card dans le <td>
+      td.appendChild( divCard );
+      //Ajout des <div> du front et back dans la <div> carte
+      divCard.appendChild( divCache );
+      divCard.appendChild( divImage );
       //Ajout du <td> dans le <tr>
       tr.appendChild( td );
     }
+
     //Ajout du <tr> dans la <table>
     app.table.appendChild( tr );
   },
+
   selectRandomImage : function () {
     var randomIndex = Math.floor(Math.random() * app.arrayTmp.length);
     //Creation de la variable temporaire
@@ -168,6 +188,7 @@ var app = {
     //On efface une fois choisi l'index dans le tableau pour pas qu'il soit répété
     app.arrayTmp.splice(randomIndex, 1);
   },
+
   updateTimer : function () {
     //Décompte
     app.seconds--;
@@ -177,6 +198,7 @@ var app = {
     $('#progress').progressbar({
       value:progressValue
     });
+
     //Test pour savoir si le décompte tombe a zéro
     if (app.seconds <= 0 ) {
       window.alert('PERDU !!!!!!');
@@ -186,13 +208,11 @@ var app = {
       app.monTimer = setTimeout(app.updateTimer, 1000);
     }
   },
+
   stopTimer : function () {
-    //Arret le timer
+    //Arret du timer
     clearTimeout( app.monTimer );
   },
 };
 
 document.addEventListener('DOMContentLoaded', app.init);
-
-// TODO:
-// Rajoutons un peu de réalisme avec une animation 3D sur les cartes qui se retournent.
